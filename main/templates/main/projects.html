@@ -1,0 +1,58 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+{% load static %}
+
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
+{% block content %}
+
+    
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h1>{% trans 'Projects' %}</h1>
+    </div>
+</div>
+
+<br>
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h5>{% trans 'Create project' %}</h5>
+    </div>
+</div>
+
+<form method="post">
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <button class="btn btn-primary">{% trans 'Create' %}</button>
+
+</form>
+
+<hr>
+
+<div class="container">
+    {% for project in page_obj %}
+        <div class="edit-pic">
+            <a href="{% url 'main:edit_project' project_name=project.unique_name %}">
+                <img src="{% static 'edit.png' %}" alt="journal logs" width="15" height="15">
+            </a>
+        </div>
+
+        <h4>
+            <a class="text-body" href="{% url 'main:project' project_name=project.unique_name %}">{{ project.title }}</a>
+        </h4>
+
+        <p>{{ project.description|safe }}</p>
+
+        <hr>
+    {% endfor %}
+</div>
+
+{% include 'main/_paginations.html' with query=query page_obj=page_obj %}
+
+{% endblock %}

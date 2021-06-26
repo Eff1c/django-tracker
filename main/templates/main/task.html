@@ -1,0 +1,65 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h1>{% trans 'Task' %} {{ task.topic }}
+            <a href="{% url 'main:edit_task' project_name=project_name task_id=task.id %}">
+                <img src="{% static 'edit.png' %}" alt="journal logs" width="25" height="25">
+            </a>
+        </h1>
+        <p>
+            <a class="text-secondary" href="{% url 'main:time_loging' project_name=project_name task_id=task.id %}">
+                {% trans 'Journal logs' %}  
+                <img src="{% static 'journal.jpeg' %}" alt="journal logs" width="15" height="15">
+            </a>
+        </p>
+        <p class="text-secondary">
+            Spend time: {{ spend_time }} hour(s)&nbsp; Estimated time: {{ task.estimated_time }} hour(s)
+        </p>
+    </div>
+</div>
+
+<form method="post">
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <button class="btn btn-primary">{% trans 'Comment' %}</button>
+
+</form>
+
+<hr>
+
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h3>{% trans 'Comments' %}</h1>
+    </div>
+</div>
+
+<hr>
+
+<div class="container">
+    {% for comment in page_obj %}
+        <div class="comment-content">
+            {% if user.employee.avatar %}
+                <div class="avatar"><img src="{{MEDIA_URL}}/{{ user.employee.avatar }}" alt="" width="60" height="60"></div>
+            {% endif %}
+            <div class="comment-date">{{ comment.created }}</div>
+            <div class="comment-author">{{ comment.author }}</div>
+            <div class="comment-content">
+                {{ comment.comment }}
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+</div>
+
+{% include 'main/_paginations.html' with query=query page_obj=page_obj %}
+
+{% endblock %}

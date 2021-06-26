@@ -1,0 +1,62 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h1>{% trans 'Time loging' %} 
+            <a class="text-body" href="{% url 'main:task' project_name=project_name task_id=task.id %}">{{ task.topic }} </a>
+            {% trans 'task' %}
+        </h1>
+    </div>
+</div>
+
+<form method="post">
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <button class="btn btn-primary">{% trans 'Create' %}</button>
+
+</form>
+
+<hr>
+
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h3>{% trans 'Logs' %}</h1>
+    </div>
+</div>
+
+<hr>
+
+<div class="container">
+    {% for log in page_obj %}
+        <div class="comment-content">
+            {% if user.is_superuser %}
+            <div class="edit-pic">
+                <a href="{% url 'main:log_edit' project_name=project_name task_id=task.id log_id=log.id %}">
+                    <img src="{% static 'edit.png' %}" alt="journal logs" width="15" height="15">
+                </a>
+            </div>
+            {% endif %}
+            {% if user.employee.avatar %}
+                <div class="avatar"><img src="{{MEDIA_URL}}/{{ user.employee.avatar }}" alt="" width="60" height="60"></div>
+            {% endif %}
+            <div class="comment-author">{{ log.author }}</div>
+            <div class="comment-time-spent">Spent {{ log.time_spent }} hour(s)</div>
+            <div class="comment-content">
+                {{ log.comment }}
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+</div>
+
+{% include 'main/_paginations.html' with query=query page_obj=page_obj %}
+
+{% endblock %}

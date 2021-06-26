@@ -1,0 +1,32 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h1>{% trans 'Edit task' %} 
+            <a class="text-body" href="{% url 'main:task' project_name=project_name task_id=task.id %}">{{ task.topic }}</a>
+        </h1>
+        <p>
+            <a class="text-secondary" href="{% url 'main:time_loging' project_name=project_name task_id=task.id %}">
+                {% trans 'Journal logs' %}  
+                <img src="{% static 'journal.jpeg' %}" alt="journal logs" width="20" height="20">
+            </a>
+        </p>
+    </div>
+</div>
+
+<form method="post">
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <button class="btn btn-primary">{% trans 'Edit' %}</button>
+
+</form>
+
+{% endblock %}

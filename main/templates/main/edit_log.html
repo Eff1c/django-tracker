@@ -1,0 +1,22 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h1>{% trans 'Time loging edit' %}</h1>
+    </div>
+</div>
+
+<form method="post">
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    <button class="btn btn-primary">{% trans 'Edit' %}</button>
+
+</form>
+{% endblock %}

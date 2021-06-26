@@ -1,0 +1,68 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+    <div class="jumbotron-fluid text-center">
+        <div class="container">
+            <h1>{% trans 'Project' %} {{ project.title }}
+                <a href="{% url 'main:edit_project' project_name=project.unique_name %}">
+                    <img src="{% static 'edit.png' %}" alt="journal logs" width="25" height="25">
+                </a>
+            </h1>
+        </div>
+    </div>
+
+{% if user.is_superuser %}
+    <br>
+    <div class="jumbotron-fluid text-center">
+        <div class="container">
+            <h5>{% trans 'Create task' %}</h5>
+        </div>
+    </div>
+
+    <form method="post">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <button class="btn btn-primary">{% trans 'Create' %}</button>
+
+    </form>
+{% endif %}
+
+<hr>
+
+<div class="jumbotron-fluid text-center">
+    <div class="container">
+        <h3>{% trans 'Tasks' %}</h1>
+    </div>
+</div>
+
+<hr>
+
+<div class="container">
+    {% for task in page_obj %}
+        <div class="edit-pic">
+            <a href="{% url 'main:edit_task' project_name=project.unique_name task_id=task.id %}">
+                <img src="{% static 'edit.png' %}" alt="journal logs" width="15" height="15">
+            </a>
+        </div>
+        <h4>
+            <a class="text-body" href="{% url 'main:task' project_name=project.unique_name task_id=task.id %}">{{ task.topic }}</a>
+        </h4>
+        <p>{{ task.description }}</p>
+        <p class="text-secondary">{% trans 'Start date' %}: {{ task.start_date }};&nbsp; {% trans 'Finish date' %}: {{ task.finish_date }}</p>
+        <p>Type: {{ task.type }};&nbsp; Priority: {{ task.priority }}</p>
+        <p>Estimated time: {{ task.estimated_time }}</p>
+        <p>Author: {{ task.author }};&nbsp; Executor: {{ task.executor }};&nbsp; Project: {{ task.project }}</p>
+        <hr>
+    {% endfor %}
+</div>
+
+{% include 'main/_paginations.html' with query=query page_obj=page_obj %}
+
+{% endblock %}

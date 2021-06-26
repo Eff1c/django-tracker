@@ -1,0 +1,3 @@
+New change in task {{ task.topic }}
+
+{{ text }}

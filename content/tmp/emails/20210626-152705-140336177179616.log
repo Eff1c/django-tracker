@@ -1,0 +1,65 @@
+Content-Type: multipart/alternative;
+ boundary="===============6563291992105585598=="
+MIME-Version: 1.0
+Subject: Change notification
+From: test@example.com
+To: admin
+Date: Sat, 26 Jun 2021 15:27:05 -0000
+Message-ID: <162472122516.17384.11898793840453156723@eff1c-SATELLITE-S50-B>
+
+--===============6563291992105585598==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+New change in task new
+
+Editor: admin.
+Field: topic. Old value: something; new value: new.
+Field: description. Old value: Lacus sed turpis tincidunt id aliquet. Rutrum quisque non tellus orci ac. Cursus mattis molestie a iaculis at erat pellentesque. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Viverra adipiscing at in tellus integer feugiat scelerisque. Risus commodo viverra maecenas accumsan lacus vel facilisis. Senectus et netus et malesuada fames at erat pellentesque.; new value: Lacus sed turpis tincidunt id aliquet. Rutrum quisque non tellus orci ac. Cursus mattis molestie a iaculis at erat pellentesque. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Viverra adipiscing at in tellus integer feugiat scelerisque. Risus commodo viverra maecenas accumsan lacus vel facilisis. Senectus et netus et malesuada fames at erat..
+Field: start_date. Old value: 2021-11-01; new value: 2022-09-14.
+Field: finish_date. Old value: 2021-01-01; new value: 2023-01-01.
+Field: type. Old value: Feauture; new value: Bug.
+Field: priority. Old value: Low; new value: Hight.
+Field: estimated_time. Old value: 10; new value: 11.
+Field: executor. Old value: test_user; new value: user2.
+
+--===============6563291992105585598==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Change notification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+
+<p>
+    New change in task new
+</p>
+
+<p>
+    Editor: admin.
+Field: topic. Old value: something; new value: new.
+Field: description. Old value: Lacus sed turpis tincidunt id aliquet. Rutrum quisque non tellus orci ac. Cursus mattis molestie a iaculis at erat pellentesque. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Viverra adipiscing at in tellus integer feugiat scelerisque. Risus commodo viverra maecenas accumsan lacus vel facilisis. Senectus et netus et malesuada fames at erat pellentesque.; new value: Lacus sed turpis tincidunt id aliquet. Rutrum quisque non tellus orci ac. Cursus mattis molestie a iaculis at erat pellentesque. Aliquet porttitor lacus luctus accumsan tortor posuere ac ut consequat. Viverra adipiscing at in tellus integer feugiat scelerisque. Risus commodo viverra maecenas accumsan lacus vel facilisis. Senectus et netus et malesuada fames at erat..
+Field: start_date. Old value: 2021-11-01; new value: 2022-09-14.
+Field: finish_date. Old value: 2021-01-01; new value: 2023-01-01.
+Field: type. Old value: Feauture; new value: Bug.
+Field: priority. Old value: Low; new value: Hight.
+Field: estimated_time. Old value: 10; new value: 11.
+Field: executor. Old value: test_user; new value: user2.
+</p>
+
+</body>
+
+</html>
+
+--===============6563291992105585598==--
+
+-------------------------------------------------------------------------------

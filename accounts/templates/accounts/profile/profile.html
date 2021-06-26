@@ -1,0 +1,33 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load bootstrap4 %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<h3>{% trans 'Profile' %}</h3>
+<div class="col-6">
+    {% if user.employee.avatar %}
+        <div class="avatar"><img src="{{MEDIA_URL}}/{{ user.employee.avatar }}" alt="" width="50" height="50"></div>
+    {% endif %}
+    <div class="username">{{ user.username }}</div>
+    <div class="name">{{ user.first_name }} {{ user.last_name }}</div>
+    <div class="email">Email: {{ user.email }}</div>
+    <div class="birthday">Position: {{ user.employee.position }}</div>
+    <div class="birthday">Birthday: {{ user.employee.birthday }}</div>
+</div>
+
+<br>
+
+<h4>{% trans 'Change profile' %}</h4>
+<div class="col-6">
+    <form method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <button class="btn btn-success">{% trans 'Change' %}</button>
+
+    </form>
+</div>
+{% endblock %}

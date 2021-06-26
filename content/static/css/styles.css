@@ -1,0 +1,45 @@
+/*  COMMENT */
+.comments {
+    list-style-type: none;
+    padding: 0px;
+    margin: 16px 0px 0px 0px;
+}
+.comments .comment {
+    margin-left: 32px;
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.comments .comment:nth-child(1) {
+    border-top: 1px solid #e0e0e0;
+}
+.comments .comment:hover {
+    background-color: #f0f0f0;
+}
+div.comment-date {
+    float: right;
+}
+div.comment-time-spent{
+    font-size: 15px;
+    color: gray;
+}
+div.comment-author {
+    font-size: 20px;
+    font-weight: bold;
+}
+div.comment-author-email{
+    color: rgba(0, 0, 0, 0.5);
+}
+div.comment-thumbnail {
+    position: absolute;
+}
+div.comment-content {
+    min-height: 48px;
+}
+div.comment-form {
+    margin: 16px 0px 16px 32px;
+}
+
+/*  */
+.edit-pic {
+    float: right;
+}
