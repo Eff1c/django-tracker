@@ -363,12 +363,12 @@ def time_loging(request, project_name, task_id):
     if request.method == 'POST':
         form = TimeLogingForm(request.POST)
         if form.is_valid():
-            new_comment = TimeLoging()
-            new_comment.author = current_user
-            new_comment.time_spent = form.cleaned_data['time_spent']
-            new_comment.comment = form.cleaned_data['text']
-            new_comment.task = current_task
-            new_comment.save()
+            new_log = TimeLoging()
+            new_log.author = current_user
+            new_log.time_spent = form.cleaned_data['time_spent']
+            new_log.comment = form.cleaned_data['comment']
+            new_log.task = current_task
+            new_log.save()
 
             messages.success(request, _('You are successfully add new log!'))
 

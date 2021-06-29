@@ -80,7 +80,7 @@ EMAIL_USE_SSL = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'tracker.db'),
     }
 }
 
@@ -105,7 +105,7 @@ LOGIN_VIA_EMAIL = False
 LOGIN_VIA_EMAIL_OR_USERNAME = True
 LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'accounts:log_in'
-USE_REMEMBER_ME = False
+USE_REMEMBER_ME = True
 
 RESTORE_PASSWORD_VIA_EMAIL_OR_USERNAME = True
 EMAIL_ACTIVATION_AFTER_CHANGING = True
